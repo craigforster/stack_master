@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- Test on Ruby 3.0 in the CI build ([#359]).
+
 ### Changed
 
 - Use GitHub Actions for the CI build instead of Travis CI ([#353]).
@@ -20,6 +24,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 [Unreleased]: https://github.com/envato/stack_master/compare/v2.12.0...HEAD
 [#353]: https://github.com/envato/stack_master/pull/353
 [#356]: https://github.com/envato/stack_master/pull/356
+[#359]: https://github.com/envato/stack_master/pull/359
 
 ## [2.12.0] - 2020-10-22
 

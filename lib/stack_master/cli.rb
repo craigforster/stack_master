@@ -37,6 +37,9 @@ module StackMaster
       global_option '--skip-account-check', 'Do not check if command is allowed to execute in account' do
         StackMaster.skip_account_check!
       end
+      global_option '--fail-fast', 'Exit after the first failed stack when executing against multiple stacks' do
+        StackMaster.fail_fast!
+      end
 
       command :apply do |c|
         c.syntax = 'stack_master apply [region_or_alias] [stack_name]'
@@ -276,7 +279,8 @@ module StackMaster
           StackMaster.stdout.puts "Executing #{command.command_name} on #{stack_definition.stack_name} in #{stack_definition.region}"
           success = execute_if_allowed_account(stack_definition.allowed_accounts) do
             command.perform(config, stack_definition, options).success?
-          end && success
+          end
+          break if StackMaster.fail_fast? && !success
         end
       end
       @kernel.exit false unless success
